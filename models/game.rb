@@ -17,7 +17,7 @@ class Game
   end
 
   def self.greeting_message #X
-     @@greeting_message
+     greeting_message
   end
 
   # def self.goodbye_message #X

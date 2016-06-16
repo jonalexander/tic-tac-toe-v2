@@ -15,27 +15,34 @@ require_relative 'services/ClearBoard.rb'
 
 class TicTacToe
 
-  attr_accessor 
+  attr_accessor :game, :player, :board 
 
   def initialize
   end 
 
   def run
+    create_game
+    set_players
   end
 
+  def self.create_game
+    @game = Game.new
+    @player = @game.current_player
+    @board = Board.new
+    #Game.greeting_message  
+  end
 
-current_game = Game.new
+self.create_game 
+self.set_players
 
-player = current_game.current_player
-Game.greeting_message  
-
-board = Board.new
-GetAndSetPlayerInfo.new(current_game).run
-board.print_board
+# current_game = @game
+# current_player = current_game.player
+GetAndSetPlayerInfo.new(@game).run
+@board.print_board
 
 # run_status = "open"
 
-# while run_status == "open"
+# while run_status == "open"s
 
   while board.status == "open"
 
