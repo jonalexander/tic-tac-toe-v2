@@ -11,25 +11,30 @@ require_relative 'services/UpdateRecord.rb'
 require_relative 'services/CloseBoardStatus.rb'
 require_relative 'services/SwitchTurns.rb'
 require_relative 'services/ComputerMove.rb'
+require_relative 'services/ClearBoard.rb'
 
 class Run
 
-  attr_accessor :run_status
+  attr_accessor #:game
+
+  #run_status
 
  def initialize
-  @run_status = "open"
+  # @run_status = "open"
  end 
 
-  def self.play_again?
-    puts 'Do you want to play again? Yes or No'
-    answer = gets.upcase.chomp
-    if answer == "YES"
-      @run_status = "open"
+  # def self.play_again?
+  #   puts 'Do you want to play again? Yes or No'
+  #   answer = gets.upcase.chomp
+  #   if answer == "YES"
+  #     @run_status = "open"
+  #   else
+  #     @run_status = "closed"
+  #   end
+  # end
 
-    else
-      @run_status = "closed"
-    end
-  end
+
+ #ef create_game 
 
 current_game = Game.new
 player = current_game.current_player
@@ -39,9 +44,9 @@ board = Board.new
 GetAndSetPlayerInfo.new(current_game).run
 board.print_board
 
-run_status = "open"
+# run_status = "open"
 
-while run_status == "open"
+# while run_status == "open"
 
   while board.status == "open"
 
@@ -65,7 +70,9 @@ while run_status == "open"
     #CloseBoardStatus.new(board)
     board.print_board
     current_game.win_message
-    CloseBoardStatus.new(board) if !self.play_again? 
+    clear_board = ClearBoard.new(board)
+    clear_board.run
+    CloseBoardStatus.new(board) #if !self.play_again?
   elsif board.check_for_tie
     update_tie_current_player = UpdateRecord.new(current_game.current_player)
     update_tie_current_player.tie
@@ -74,11 +81,14 @@ while run_status == "open"
     #CloseBoardStatus.new(board)
     board.print_board
     current_game.tie_message
-    CloseBoardStatus.new(board) if !self.play_again? 
+    clear_board = ClearBoard.new(board)
+    clear_board.run
+    CloseBoardStatus.new(board) #if !self.play_again? 
   end
 
   switch = SwitchTurns.new(current_game)
   switch.run
-  end
-end
+  end #closes board.status loop
+
+#end #run
 end #class
