@@ -39,16 +39,16 @@ class Player
   #    @token = gets.upcase.strip
   # end
 
-  def update_record_win #X
-    self.record[:wins] += 1
-  end
+  # def update_record_win #X
+  #   self.record[:wins] += 1
+  # end
 
-  def update_record_loss #X
-    self.record[:losses] += 1
-  end
+  # def update_record_loss #X
+  #   self.record[:losses] += 1
+  # end
 
-  def update_record_tie #X
-    self.record[:ties] += 1
-  end
+  # def update_record_tie #X
+  #   self.record[:ties] += 1
+  # end
 end
 

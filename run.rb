@@ -13,30 +13,19 @@ require_relative 'services/SwitchTurns.rb'
 require_relative 'services/ComputerMove.rb'
 require_relative 'services/ClearBoard.rb'
 
-class Run
+class TicTacToe
 
-  attr_accessor #:game
+  attr_accessor 
 
-  #run_status
+  def initialize
+  end 
 
- def initialize
-  # @run_status = "open"
- end 
+  def run
+  end
 
-  # def self.play_again?
-  #   puts 'Do you want to play again? Yes or No'
-  #   answer = gets.upcase.chomp
-  #   if answer == "YES"
-  #     @run_status = "open"
-  #   else
-  #     @run_status = "closed"
-  #   end
-  # end
-
-
- #ef create_game 
 
 current_game = Game.new
+
 player = current_game.current_player
 Game.greeting_message  
 
@@ -90,5 +79,4 @@ board.print_board
   switch.run
   end #closes board.status loop
 
-#end #run
-end #class
+end #class Tic Tac Toe
