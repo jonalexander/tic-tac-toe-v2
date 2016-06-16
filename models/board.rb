@@ -1,6 +1,6 @@
 require 'pry'
 class Board
-  attr_accessor :winner, :status, :winning_scenarios
+  attr_accessor :winner, :status, :winning_scenarios, :board
 
   def initialize #could sort of reuse for checkers
     @board = []
@@ -19,32 +19,36 @@ class Board
 
   end
 
-  def blank #X
-    " "
+  # def blank #X
+  #   " "
+  # end
+
+  # def get_square(move) #X
+  #   @board[move]
+  # end
+
+
+  #KEEP
+  def empty_square?(move) 
+    @board[move] == " "
   end
 
-  def get_square(move) #X
-    @board[move]
-  end
-
-  def empty_square?(move) #X
-    @board[move] == blank
-  end
-
+  #MOVE TO SERVICE CLASS
   def set_square(move, player) #X
     @board[move] = player.token
   end
 
-  def check_and_set_square(move, player) #X
-    if empty_square?(move)
-      set_square(move, player)
-    end
-  end
+  #CHECK IS BUILT INTO PLAYERMOVE
+  # def check_and_set_square(move, player) #X
+  #   if empty_square?(move)
+  #     set_square(move, player)
+  #   end
+  # end
 
   def check_for_win
     result = nil
     @winning_scenarios.each do |combo_array|
-      if (@board[combo_array[0]] != blank && @board[combo_array[0]] == @board[combo_array[1]]) && @board[combo_array[1]] == @board[combo_array[2]]
+      if (@board[combo_array[0]] != " " && @board[combo_array[0]] == @board[combo_array[1]]) && @board[combo_array[1]] == @board[combo_array[2]]
         result = true
         break
       else
@@ -76,7 +80,7 @@ class Board
     answer = @board.each_with_object([]) do |square, result_array|
       result_array << square
     end
-    answer.include?(blank) ? false : true
+    answer.include?(" ") ? false : true
   end
 
   def print_board

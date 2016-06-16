@@ -7,7 +7,6 @@ class SetTokens
     @player = player
     @computer = computer
     @token_input = token_input
-    binding.pry
   end
 
   def run

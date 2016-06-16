@@ -8,6 +8,7 @@ class GetAndSetPlayerInfo
     @game = game
     game.computer_opponent = ComputerPlayer.new
     @computer = game.computer_opponent
+    game.other_player = @computer
   end
 
   def prompt_for_name
@@ -17,8 +18,6 @@ class GetAndSetPlayerInfo
   def prompt_for_token #X
     puts "X or O?"
   end
-
-
 
   def run 
     prompt_for_name
